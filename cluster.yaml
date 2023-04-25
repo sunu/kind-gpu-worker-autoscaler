@@ -1,0 +1,17 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: gpu-test
+nodes:
+  - role: control-plane
+    gpus: true
+  # - role: worker
+  #   labels:
+  #     tier: gpu
+  #   gpus: true
+  # - role: worker
+  #   labels:
+  #     tier: cpu
+  #   extraPortMappings:
+  #     - containerPort: 9090
+  #       hostPort: 9090
+  #       protocol: TCP

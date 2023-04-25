@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cpu-worker
+spec:
+  selector:
+    matchLabels:
+      app: cpu-worker
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cpu-worker
+    spec:
+      # nodeSelector:
+      #   tier: cpu
+      containers:
+        - name: cpu-worker
+          image: autoscale-cpu-worker
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: REDIS_HOST
+              value: redis
